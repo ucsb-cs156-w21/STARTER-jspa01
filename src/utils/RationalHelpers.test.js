@@ -1,7 +1,4 @@
-import {
-  addRationalsFromUserInput,
-  subtractRationalsFromUserInput,
-} from "./RationalHelpers";
+import { addRationalsFromUserInput } from "./RationalHelpers";
 import Rational from "rationals/Rational";
 jest.mock("rationals/Rational");
 
