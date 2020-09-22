@@ -1,3 +1,9 @@
+# React Rational Calculator
+
+This is the code for the React Rational Calculator lab.
+
+## Create React App disclaimer/info
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
