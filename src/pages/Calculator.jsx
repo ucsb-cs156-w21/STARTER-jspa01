@@ -1,5 +1,10 @@
 import React, { useState, useReducer } from "react";
-import { addRationalsFromUserInput } from "utils/RationalHelpers";
+import {
+  addRationalsFromUserInput,
+  subtractRationalsFromUserInput,
+  multiplyRationalsFromUserInput,
+  divideRationalsFromUserInput,
+} from "utils/RationalHelpers";
 
 const Calculator = () => {
   const [result, setResult] = useState("No result yet.");
@@ -32,6 +37,25 @@ const Calculator = () => {
     event.preventDefault();
 
     const result = addRationalsFromUserInput(userInput);
+    setResult(result);
+  };
+
+  const onSubtractClick = (event) => {
+    event.preventDefault();
+
+    const result = subtractRationalsFromUserInput(userInput);
+    setResult(result);
+  };
+
+  const onMultiplyClick = (event) => {
+    event.preventDefault();
+    const result = multiplyRationalsFromUserInput(userInput);
+    setResult(result);
+  };
+
+  const onDivideClick = (event) => {
+    event.preventDefault();
+    const result = divideRationalsFromUserInput(userInput);
     setResult(result);
   };
 
@@ -72,7 +96,9 @@ const Calculator = () => {
         </div>
         <div>
           <button onClick={onAddClick}>Add</button>
-          <button>Subtract</button>
+          <button onClick={onSubtractClick}>Subtract</button>
+          <button onClick={onMultiplyClick}>Multiply</button>
+          <button onClick={onDivideClick}>Divide</button>
         </div>
       </form>
       <div>{result}</div>
