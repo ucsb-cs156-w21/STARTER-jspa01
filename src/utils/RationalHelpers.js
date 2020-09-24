@@ -1,6 +1,6 @@
 import Rational from "rationals/Rational";
 
-const addRationalsFromUserInput = (userInput) => {
+const parseRationalsFromUserInput = (userInput) => {
   const firstRational = new Rational(
     parseInt(userInput.firstNumerator),
     parseInt(userInput.firstDenominator)
@@ -10,13 +10,50 @@ const addRationalsFromUserInput = (userInput) => {
     parseInt(userInput.secondDenominator)
   );
 
+  return [firstRational, secondRational];
+};
+
+const addRationalsFromUserInput = (userInput) => {
+  const [firstRational, secondRational] = parseRationalsFromUserInput(
+    userInput
+  );
+
   const result = Rational.sum(firstRational, secondRational);
 
   return result.toString();
 };
 
 const subtractRationalsFromUserInput = (userInput) => {
-  return "0/1";
+  const [firstRational, secondRational] = parseRationalsFromUserInput(
+    userInput
+  );
+
+  const result = Rational.subtract(firstRational, secondRational);
+  return result.toString();
 };
 
-export { addRationalsFromUserInput, subtractRationalsFromUserInput };
+const multiplyRationalsFromUserInput = (userInput) => {
+  const [firstRational, secondRational] = parseRationalsFromUserInput(
+    userInput
+  );
+
+  const result = Rational.multiply(firstRational, secondRational);
+  return result.toString();
+};
+
+const divideRationalsFromUserInput = (userInput) => {
+  const [firstRational, secondRational] = parseRationalsFromUserInput(
+    userInput
+  );
+
+  const result = Rational.quotient(firstRational, secondRational);
+  return result.toString();
+};
+
+export {
+  addRationalsFromUserInput,
+  subtractRationalsFromUserInput,
+  multiplyRationalsFromUserInput,
+  divideRationalsFromUserInput,
+  parseRationalsFromUserInput,
+};
