@@ -19,7 +19,11 @@ export default class Rational {
       this.numerator /= greatestCommonDivisor;
       this.denominator /= greatestCommonDivisor;
     }
-    return this;
+
+    if ((this.numerator < 0 && this.denominator < 0) || this.denominator < 0) {
+      this.numerator *= -1;
+      this.denominator *= -1;
+    }
   }
 
   toString() {
@@ -27,7 +31,7 @@ export default class Rational {
   }
 
   plus(other) {
-    checkIfRational(other);
+    verifyIsRational(other);
     if (this.numerator === 0)
       return new Rational(other.numerator, other.denominator);
     if (other.numerator === 0)
@@ -45,29 +49,69 @@ export default class Rational {
   }
 
   static sum(first, second) {
-    checkIfRational(first);
-    checkIfRational(second);
+    verifyIsRational(first);
+    verifyIsRational(second);
 
     return first.plus(second);
   }
 
-  minus(other) {
-    checkIfRational(other);
+  times(other) {
+    verifyIsRational(other);
+    if (this.numerator === 0 || other.numerator === 0)
+      return new Rational(0, 1);
 
-    return new Rational(0, 1);
+    const numerator = this.numerator * other.numerator;
+    const denominator = this.denominator * other.denominator;
+
+    return new Rational(numerator, denominator);
+  }
+
+  static multiply(first, second) {
+    verifyIsRational(first);
+    verifyIsRational(second);
+
+    return first.times(second);
+  }
+
+  minus(other) {
+    verifyIsRational(other);
+    const negativeOther = other.times(new Rational(-1, 1));
+
+    return this.plus(negativeOther);
   }
 
   static subtract(first, second) {
-    checkIfRational(first);
-    checkIfRational(second);
+    verifyIsRational(first);
+    verifyIsRational(second);
 
     return first.minus(second);
   }
+
+  reciprocal() {
+    return new Rational(this.denominator, this.numerator);
+  }
+
+  dividedBy(other) {
+    verifyIsRational(other);
+
+    const reciprocal = other.reciprocal();
+
+    return this.times(reciprocal);
+  }
+
+  static quotient(first, second) {
+    verifyIsRational(first);
+    verifyIsRational(second);
+
+    return first.dividedBy(second);
+  }
 }
 
-function checkIfRational(object) {
-  if (typeof object === Rational) {
-    throw new Error(`Not a Rational object; instead was ${typeof object}`);
+function verifyIsRational(object) {
+  if (!(object instanceof Rational)) {
+    throw new Error(`Not a Rational object; instead was ${object.__proto__}`);
   }
   return true;
 }
+
+export { verifyIsRational };
