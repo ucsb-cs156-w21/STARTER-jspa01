@@ -8,14 +8,15 @@ export default class Rational {
       );
     }
 
-    if (denominator === 0) {
+    this.numerator = Math.trunc(numerator);
+    this.denominator = Math.trunc(denominator);
+
+    if (this.denominator === 0) {
       throw new Error("Denominator can not be 0");
     }
 
-    this.numerator = numerator;
-    this.denominator = denominator;
-    if (numerator !== 0) {
-      const greatestCommonDivisor = gcd(numerator, denominator);
+    if (this.numerator !== 0) {
+      const greatestCommonDivisor = gcd(this.numerator, this.denominator);
       this.numerator /= greatestCommonDivisor;
       this.denominator /= greatestCommonDivisor;
     }
@@ -31,7 +32,7 @@ export default class Rational {
   }
 
   plus(other) {
-    verifyIsRational(other);
+    Rational.verifyIsRational(other);
     if (this.numerator === 0)
       return new Rational(other.numerator, other.denominator);
     if (other.numerator === 0)
@@ -49,14 +50,14 @@ export default class Rational {
   }
 
   static sum(first, second) {
-    verifyIsRational(first);
-    verifyIsRational(second);
+    Rational.verifyIsRational(first);
+    Rational.verifyIsRational(second);
 
     return first.plus(second);
   }
 
   times(other) {
-    verifyIsRational(other);
+    Rational.verifyIsRational(other);
     if (this.numerator === 0 || other.numerator === 0)
       return new Rational(0, 1);
 
@@ -67,22 +68,22 @@ export default class Rational {
   }
 
   static multiply(first, second) {
-    verifyIsRational(first);
-    verifyIsRational(second);
+    Rational.verifyIsRational(first);
+    Rational.verifyIsRational(second);
 
     return first.times(second);
   }
 
   minus(other) {
-    verifyIsRational(other);
+    Rational.verifyIsRational(other);
     const negativeOther = other.times(new Rational(-1, 1));
 
     return this.plus(negativeOther);
   }
 
   static subtract(first, second) {
-    verifyIsRational(first);
-    verifyIsRational(second);
+    Rational.verifyIsRational(first);
+    Rational.verifyIsRational(second);
 
     return first.minus(second);
   }
@@ -92,7 +93,7 @@ export default class Rational {
   }
 
   dividedBy(other) {
-    verifyIsRational(other);
+    Rational.verifyIsRational(other);
 
     const reciprocal = other.reciprocal();
 
@@ -100,18 +101,16 @@ export default class Rational {
   }
 
   static quotient(first, second) {
-    verifyIsRational(first);
-    verifyIsRational(second);
+    Rational.verifyIsRational(first);
+    Rational.verifyIsRational(second);
 
     return first.dividedBy(second);
   }
-}
 
-function verifyIsRational(object) {
-  if (!(object instanceof Rational)) {
-    throw new Error(`Not a Rational object; instead was ${object.__proto__}`);
+  static verifyIsRational(object) {
+    if (!(object instanceof Rational)) {
+      throw new Error(`Not a Rational object; instead was ${object.__proto__}`);
+    }
+    return true;
   }
-  return true;
 }
-
-export { verifyIsRational };
