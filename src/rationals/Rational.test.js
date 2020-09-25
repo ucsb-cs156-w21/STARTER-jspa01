@@ -1,4 +1,4 @@
-import Rational, { verifyIsRational } from "./Rational";
+import Rational from "./Rational";
 
 describe("Rational class tests", () => {
   const oneThird = new Rational(1, 3);
@@ -13,6 +13,12 @@ describe("Rational class tests", () => {
       expect(rational.denominator).toBe(2);
     });
 
+    test("truncates decimals", () => {
+      const expected = new Rational(3, 2);
+      const actual = new Rational(3.1, 2.9);
+      expect(actual).toEqual(expected);
+    });
+
     test("resolves double negatives", () => {
       const rational = new Rational(-1, -2);
       expect(rational).toMatchObject({
@@ -24,6 +30,10 @@ describe("Rational class tests", () => {
     test("throws an error when an incorrect type is passed for either argument", () => {
       expect(() => new Rational({}, 2)).toThrow();
       expect(() => new Rational(1, {})).toThrow();
+    });
+
+    test("truncation triggers 0 denominator error", () => {
+      expect(() => new Rational(1, 0.9)).toThrow();
     });
 
     test("throws an error when denominator is 0", () => {
@@ -157,21 +167,21 @@ describe("Rational class tests", () => {
 
   describe("verifyIsRational tests", () => {
     test("does not accept objects, nulls, or undefined", () => {
-      expect(() => verifyIsRational({})).toThrow();
+      expect(() => Rational.verifyIsRational({})).toThrow();
       expect(() =>
-        verifyIsRational({
+        Rational.verifyIsRational({
           numerator: 1,
           denominator: 2,
         })
       ).toThrow();
-      expect(() => verifyIsRational(null)).toThrow();
-      expect(() => verifyIsRational(undefined)).toThrow();
+      expect(() => Rational.verifyIsRational(null)).toThrow();
+      expect(() => Rational.verifyIsRational(undefined)).toThrow();
     });
 
     test("does accept Rationals created with new Rational constructor", () => {
       const rational = new Rational(1, 1);
 
-      expect(verifyIsRational(rational)).toBe(true);
+      expect(Rational.verifyIsRational(rational)).toBe(true);
     });
   });
 });
