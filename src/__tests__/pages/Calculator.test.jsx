@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Calculator from "./Calculator";
+import Calculator from "pages/Calculator";
 import {
   addRationalsFromUserInput,
   subtractRationalsFromUserInput,
