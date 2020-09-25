@@ -17,6 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "test:json": "react-scripts test --json --watchAll=false --outputFile=testResults.json",
     "coverage": "react-scripts test --env=jsdom-fourteen --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
