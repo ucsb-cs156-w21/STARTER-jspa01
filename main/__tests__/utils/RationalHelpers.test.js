@@ -4,7 +4,7 @@ import {
   subtractRationalsFromUserInput,
   multiplyRationalsFromUserInput,
   divideRationalsFromUserInput,
-} from "utils/RationalHelpers";
+} from "../../pages/node_modules/utils/RationalHelpers";
 import Rational from "rationals/Rational";
 jest.mock("rationals/Rational");
 

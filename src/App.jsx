@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Calculator from "./pages/Calculator";
+import Calculator from "./pages/Add";
 import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 
