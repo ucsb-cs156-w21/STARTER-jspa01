@@ -4,6 +4,7 @@ import Add from "./pages/Add";
 import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
+import AppFooter from "./components/AppFooter";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/add" component={Add} />
         </Switch>
       </Container>
+      <AppFooter />
     </div>
   );
 }
