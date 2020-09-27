@@ -8,7 +8,7 @@ describe("Add tests", () => {
     render(<Add />);
   });
 
-  test("pressing the add button should sum the two rationals", () => {
+  test("pressing the calculate button should sum the two rationals", () => {
     const { getAllByPlaceholderText, getByRole } = render(<Add />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");
@@ -17,8 +17,8 @@ describe("Add tests", () => {
     userEvent.type(numeratorFields[1], "3");
     userEvent.type(denominatorFields[1], "4");
 
-    const addButton = getByRole("button");
-    userEvent.click(addButton);
+    const calculateButton = getByRole("button");
+    userEvent.click(calculateButton);
 
     const resultNumeratorField = getAllByPlaceholderText("numerator")[2];
     const resultDenominatorField = getAllByPlaceholderText("denominator")[2];

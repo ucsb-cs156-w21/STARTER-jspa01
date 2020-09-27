@@ -1,16 +1,16 @@
 import React from "react";
-import { subtractRationalsFromUserInput } from "utils/RationalHelpers";
+import { multiplyRationalsFromUserInput } from "utils/RationalHelpers";
 import Calculator from "components/Calculator";
 
-const Subtract = () => {
+const Multiply = () => {
   const props = {
-    calculateFromUserInput: subtractRationalsFromUserInput,
-    title: "Subtract",
+    calculateFromUserInput: multiplyRationalsFromUserInput,
+    title: "Multiply",
     subtitle:
       "Fill in the numerator and denominator of two rational numbers (fractions) below, then click the Calculate button to see the result",
-    sign: "-",
+    sign: "*",
   };
   return <Calculator {...props} />;
 };
 
-export default Subtract;
+export default Multiply;
