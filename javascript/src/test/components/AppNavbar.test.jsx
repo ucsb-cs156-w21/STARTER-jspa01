@@ -4,7 +4,7 @@ import AppNavbar from "main/components/AppNavbar";
 import { BrowserRouter } from "react-router-dom";
 
 describe("AppNavbar tests", () => {
-  test("should have the name of the app", () => {
+  test("(1 pts) should have the name of the app", () => {
     const { getByText } = render(
       <BrowserRouter>
         <AppNavbar />
@@ -15,7 +15,7 @@ describe("AppNavbar tests", () => {
 
     expect(brand).toBeInTheDocument();
   });
-  test("should render a link to each page ", () => {
+  test("(1 pts) should render a link to each page ", () => {
     const { getByText } = render(
       <BrowserRouter>
         <AppNavbar />

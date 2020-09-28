@@ -8,11 +8,11 @@ describe("RationalInput tests", () => {
     numerator: "",
     denominator: "",
   };
-  test("renders without crashing", () => {
+  test("(1 pts) renders without crashing", () => {
     render(<RationalInput value={baseValue} />);
   });
 
-  test("calls handleChange when form inputs are changed", () => {
+  test("(1 pts) calls handleChange when form inputs are changed", () => {
     const handleChange = jest.fn();
 
     const { getByPlaceholderText } = render(
@@ -29,7 +29,7 @@ describe("RationalInput tests", () => {
     expect(handleChange.mock.calls[1]).toEqual([5, "denominator", "2"]);
   });
 
-  test("can't edit while in readOnly mode", () => {
+  test("(2 pts) can't edit while in readOnly mode", () => {
     const handleChange = jest.fn();
 
     const { getByPlaceholderText } = render(

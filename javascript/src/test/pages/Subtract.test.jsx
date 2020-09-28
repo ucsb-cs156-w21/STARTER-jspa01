@@ -4,11 +4,11 @@ import userEvent from "@testing-library/user-event";
 import Subtract from "main/pages/Subtract";
 
 describe("Subtract tests", () => {
-  test("it should render without crashing", () => {
+  test("(1 pts) it should render without crashing", () => {
     render(<Subtract />);
   });
 
-  test("pressing the calculate button should sum the two rationals", () => {
+  test("(2 pts) pressing the calculate button should sum the two rationals", () => {
     const { getAllByPlaceholderText, getByRole } = render(<Subtract />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");

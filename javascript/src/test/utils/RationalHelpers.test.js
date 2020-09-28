@@ -13,12 +13,12 @@ describe("RationalHelpers tests", () => {
     { numerator: "1", denominator: "3" },
     { numerator: "3", denominator: "4" },
   ];
-  test("parseRationalsFromUserInput returns an array of two rationals", () => {
+  test("(1 pts) parseRationalsFromUserInput returns an array of two rationals", () => {
     const result = parseRationalsFromUserInput(userInput);
     expect(result.length).toBe(2);
   });
 
-  test("parseRationalsFromUserInput throws an error when it parses an invalid input", () => {
+  test("(2 pts) parseRationalsFromUserInput throws an error when it parses an invalid input", () => {
     const invalidUserInput = [
       {
         numerator: "",
@@ -39,7 +39,7 @@ describe("RationalHelpers tests", () => {
       parseRationalsFromUserInput(anotherInvalidUserInput)
     ).toThrow();
   });
-  test("addRationalsFromUserInput parses user input and returns string result", () => {
+  test("(2 pts) addRationalsFromUserInput parses user input and returns string result", () => {
     const expected = new Rational(13, 12);
     Rational.sum = jest.fn();
     Rational.sum.mockReturnValue(expected);
@@ -50,7 +50,7 @@ describe("RationalHelpers tests", () => {
     expect(result).toEqual(expected);
   });
 
-  test("subtractRationalsFromUserInput parses user input and returns string result", () => {
+  test("(2 pts) subtractRationalsFromUserInput parses user input and returns string result", () => {
     const expected = new Rational(-5, 12);
     Rational.subtract = jest.fn();
     Rational.subtract.mockReturnValue(expected);
@@ -60,7 +60,7 @@ describe("RationalHelpers tests", () => {
     expect(result).toEqual(expected);
   });
 
-  test("multiplyRationalsFromUserInput parses user input and returns string result", () => {
+  test("(2 pts) multiplyRationalsFromUserInput parses user input and returns string result", () => {
     const expected = new Rational(1, 4);
     Rational.multiply = jest.fn();
     Rational.multiply.mockReturnValue(expected);
@@ -70,7 +70,7 @@ describe("RationalHelpers tests", () => {
     expect(result).toEqual(expected);
   });
 
-  test("divideRationalsFromUserInput parses user input and returns string result", () => {
+  test("(2 pts) divideRationalsFromUserInput parses user input and returns string result", () => {
     const expected = new Rational(4, 9);
     Rational.quotient = jest.fn();
     Rational.quotient.mockReturnValue(expected);
@@ -80,7 +80,7 @@ describe("RationalHelpers tests", () => {
     expect(result).toEqual(expected);
   });
 
-  test("divideRationalsFromUserInput throws an error if the second numerator is 0", () => {
+  test("(2 pts) divideRationalsFromUserInput throws an error if the second numerator is 0", () => {
     const invalidUserInput = [
       {
         numerator: "0",
