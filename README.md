@@ -2,8 +2,30 @@
 
 This is the code for the React Rational Calculator lab.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped inside the `javascript/` folder
+with [Create React App](https://github.com/facebook/create-react-app).
+
 The `README.md` file that was created by Create React App is here: [./docs/CreateReactApp-README.md](./docs/CreateReactApp-README.md)
+
+# Almost all files live under `javascript/`
+
+Note that in a pure JavaScript app like this one, it is not usually necessary
+to put all of the code inside a `javascript/` directory, *however*, since in 
+this course (CMPSC 156) we will eventually be combining a Java backend with a
+JavaScript front end, we are establishing a consistent directory convention
+right off the bat.   So, apart from the `.github/workflow` directory, and the
+top level `README.md`, all files for this project should be under the `javascript` directory.
+
+# Getting Started
+
+Always `cd javascript` before running any of these commands.
+
+* `npm install` installs the necessary packages into `javascript/node_modules`.
+  Note that the `javascript/node_modules` directory can be completely deleted
+  and rebuilt at any time (deleting it is similar to a `make clean` or `mvn clean` command).
+* `npm start` starts up a web server on http://localhost:3000 where you can
+  interact with a web page.
+* `npm test` runs the unit tests for this project. 
 
 # Setting up Code Coverage
 
