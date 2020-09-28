@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import App from "main/App";
 import { BrowserRouter } from "react-router-dom";
 
-test("renders calculator", () => {
+test("(1 pts) renders calculator", () => {
   const { getByTestId } = render(
     <BrowserRouter>
       <App />

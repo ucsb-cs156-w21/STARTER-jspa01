@@ -4,11 +4,11 @@ import userEvent from "@testing-library/user-event";
 import Divide from "main/pages/Divide";
 
 describe("Divide tests", () => {
-  test("it should render without crashing", () => {
+  test("(1 pts) it should render without crashing", () => {
     render(<Divide />);
   });
 
-  test("pressing the calculate button should sum the two rationals", () => {
+  test("(2 pts) pressing the calculate button should sum the two rationals", () => {
     const { getAllByPlaceholderText, getByRole } = render(<Divide />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");

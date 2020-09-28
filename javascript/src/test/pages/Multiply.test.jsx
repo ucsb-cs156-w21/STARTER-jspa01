@@ -4,11 +4,11 @@ import userEvent from "@testing-library/user-event";
 import Multiply from "main/pages/Multiply";
 
 describe("Multiply tests", () => {
-  test("it should render without crashing", () => {
+  test("(1 pts) it should render without crashing", () => {
     render(<Multiply />);
   });
 
-  test("pressing the calculate button should sum the two rationals", () => {
+  test("(2 pts) pressing the calculate button should sum the two rationals", () => {
     const { getAllByPlaceholderText, getByRole } = render(<Multiply />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");
