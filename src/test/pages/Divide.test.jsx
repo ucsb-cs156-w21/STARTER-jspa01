@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Divide from "pages/Divide";
+import Divide from "main/pages/Divide";
 
 describe("Divide tests", () => {
   test("it should render without crashing", () => {

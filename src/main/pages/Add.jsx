@@ -1,6 +1,6 @@
 import React from "react";
-import { addRationalsFromUserInput } from "utils/RationalHelpers";
-import Calculator from "components/Calculator";
+import { addRationalsFromUserInput } from "main/utils/RationalHelpers";
+import Calculator from "main/components/Calculator";
 
 const Add = () => {
   const props = {
