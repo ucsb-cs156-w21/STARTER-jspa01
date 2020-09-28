@@ -55,6 +55,23 @@ describe("Calculator tests", () => {
     ]);
   });
 
+  test("an error caused in the calculate function will show as an error to the user", () => {
+    const calculate = jest.fn();
+    calculate.mockImplementationOnce(() => {
+      throw new Error("Error: something went wrong");
+    });
+    const { getByText } = render(
+      <Calculator calculateFromUserInput={calculate} />
+    );
+
+    const calculateButton = getByText("Calculate");
+    userEvent.click(calculateButton);
+
+    expect(calculate).toHaveBeenCalledTimes(1);
+    const error = getByText("Error: something went wrong");
+    expect(error).toBeInTheDocument();
+  });
+
   test("passing title renders the title", () => {
     const { getByText } = render(<Calculator title="Cool Title" />);
     const title = getByText("Cool Title");

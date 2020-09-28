@@ -17,6 +17,28 @@ describe("RationalHelpers tests", () => {
     const result = parseRationalsFromUserInput(userInput);
     expect(result.length).toBe(2);
   });
+
+  test("parseRationalsFromUserInput throws an error when it parses an invalid input", () => {
+    const invalidUserInput = [
+      {
+        numerator: "",
+        denominator: "",
+      },
+    ];
+
+    expect(() => parseRationalsFromUserInput(invalidUserInput)).toThrow();
+
+    const anotherInvalidUserInput = [
+      {
+        numerator: "1",
+        denominator: "",
+      },
+    ];
+
+    expect(() =>
+      parseRationalsFromUserInput(anotherInvalidUserInput)
+    ).toThrow();
+  });
   test("addRationalsFromUserInput parses user input and returns string result", () => {
     const expected = new Rational(13, 12);
     Rational.sum = jest.fn();
@@ -56,5 +78,25 @@ describe("RationalHelpers tests", () => {
     const result = divideRationalsFromUserInput(userInput);
     expect(Rational.quotient).toBeCalledTimes(1);
     expect(result).toEqual(expected);
+  });
+
+  test("divideRationalsFromUserInput throws an error if the second numerator is 0", () => {
+    const invalidUserInput = [
+      {
+        numerator: "0",
+        denominator: "2",
+      },
+      {
+        numerator: "0",
+        denominator: "2",
+      },
+    ];
+
+    Rational.mockImplementation(() => ({
+      numerator: 0,
+      denominator: 2,
+    }));
+
+    expect(() => divideRationalsFromUserInput(invalidUserInput)).toThrow();
   });
 });

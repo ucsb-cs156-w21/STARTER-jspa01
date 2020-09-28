@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Alert } from "react-bootstrap";
 import RationalInput from "main/components/RationalInput";
 
 const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
@@ -7,6 +7,7 @@ const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
     numerator: "",
     denominator: "",
   });
+  const [error, setError] = useState(null);
   const [userInput, setUserInput] = useReducer(
     (state, { index, fieldName, value }) => {
       let newState = [...state];
@@ -32,15 +33,20 @@ const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const result = calculateFromUserInput(userInput);
-    setResult(result);
+    try {
+      const result = calculateFromUserInput(userInput);
+      setResult(result);
+      setError(null);
+    } catch (err) {
+      setError(err);
+    }
   };
 
   return (
     <div data-testid="calculator">
       <h1>{title}</h1>
       <p>{subtitle}</p>
+      {error && <Alert variant="danger">{error.message}</Alert>}
       <form onSubmit={handleSubmit}>
         <Row style={{ maxWidth: "75%" }}>
           <Col>
