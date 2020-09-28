@@ -1,6 +1,6 @@
 import React from "react";
-import { divideRationalsFromUserInput } from "utils/RationalHelpers";
-import Calculator from "components/Calculator";
+import { divideRationalsFromUserInput } from "main/utils/RationalHelpers";
+import Calculator from "main/components/Calculator";
 
 const Divide = () => {
   const props = {

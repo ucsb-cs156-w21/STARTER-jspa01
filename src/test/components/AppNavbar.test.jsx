@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import AppNavbar from "components/AppNavbar";
+import AppNavbar from "main/components/AppNavbar";
 import { BrowserRouter } from "react-router-dom";
 
 describe("AppNavbar tests", () => {

@@ -1,6 +1,6 @@
 import React from "react";
-import { multiplyRationalsFromUserInput } from "utils/RationalHelpers";
-import Calculator from "components/Calculator";
+import { multiplyRationalsFromUserInput } from "main/utils/RationalHelpers";
+import Calculator from "main/components/Calculator";
 
 const Multiply = () => {
   const props = {

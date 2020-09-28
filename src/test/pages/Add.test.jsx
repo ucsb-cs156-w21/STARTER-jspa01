@@ -1,15 +1,15 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Multiply from "pages/Multiply";
+import Add from "main/pages/Add";
 
-describe("Multiply tests", () => {
+describe("Add tests", () => {
   test("it should render without crashing", () => {
-    render(<Multiply />);
+    render(<Add />);
   });
 
   test("pressing the calculate button should sum the two rationals", () => {
-    const { getAllByPlaceholderText, getByRole } = render(<Multiply />);
+    const { getAllByPlaceholderText, getByRole } = render(<Add />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");
     userEvent.type(numeratorFields[0], "1");
@@ -22,7 +22,7 @@ describe("Multiply tests", () => {
 
     const resultNumeratorField = getAllByPlaceholderText("numerator")[2];
     const resultDenominatorField = getAllByPlaceholderText("denominator")[2];
-    expect(resultNumeratorField.value).toEqual("3");
-    expect(resultDenominatorField.value).toEqual("16");
+    expect(resultNumeratorField.value).toEqual("1");
+    expect(resultDenominatorField.value).toEqual("1");
   });
 });

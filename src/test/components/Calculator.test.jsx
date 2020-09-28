@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Calculator from "components/Calculator";
+import Calculator from "main/components/Calculator";
 
 describe("Calculator tests", () => {
   test("renders a calculator component with the correct test id", () => {

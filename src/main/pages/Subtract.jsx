@@ -1,6 +1,6 @@
 import React from "react";
-import { subtractRationalsFromUserInput } from "utils/RationalHelpers";
-import Calculator from "components/Calculator";
+import { subtractRationalsFromUserInput } from "main/utils/RationalHelpers";
+import Calculator from "main/components/Calculator";
 
 const Subtract = () => {
   const props = {

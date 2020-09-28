@@ -1,4 +1,4 @@
-import Rational from "rationals/Rational";
+import Rational from "main/rationals/Rational";
 
 describe("Rational class tests", () => {
   const oneThird = new Rational(1, 3);
