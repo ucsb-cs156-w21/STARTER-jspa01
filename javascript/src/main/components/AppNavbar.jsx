@@ -18,9 +18,6 @@ const AppNavbar = () => {
         <LinkContainer to="/multiply">
           <Nav.Link>Multiply</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/divide">
-          <Nav.Link>Divide</Nav.Link>
-        </LinkContainer>
       </Nav>
     </Navbar>
   );
