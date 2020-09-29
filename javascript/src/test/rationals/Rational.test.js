@@ -7,13 +7,13 @@ describe("Rational class tests", () => {
   const one = new Rational(1, 1);
   const zero = new Rational(0, 1);
   describe("constructor tests", () => {
-    test("(2 pts) can create a Rational object", () => {
+    test("(1 pts) can create a Rational object", () => {
       const rational = new Rational(1, 2);
       expect(rational.numerator).toBe(1);
       expect(rational.denominator).toBe(2);
     });
 
-    test("(2 pts) truncates decimals", () => {
+    test("(1 pts) truncates decimals", () => {
       const expected = new Rational(3, 2);
       const actual = new Rational(3.1, 2.9);
       expect(actual).toEqual(expected);
@@ -27,7 +27,7 @@ describe("Rational class tests", () => {
       });
     });
 
-    test("(2 pts) throws an error when an incorrect type is passed for either argument", () => {
+    test("(1 pts) throws an error when an incorrect type is passed for either argument", () => {
       expect(() => new Rational({}, 2)).toThrow();
       expect(() => new Rational(1, {})).toThrow();
     });
@@ -56,33 +56,33 @@ describe("Rational class tests", () => {
   });
 
   describe("sum/plus tests", () => {
-    test("(2 pts) zero identity tests", () => {
+    test("(1 pts) zero identity tests", () => {
       expect(one.plus(zero)).toEqual(one);
       expect(zero.plus(one)).toEqual(one);
     });
 
-    test("(2 pts) 1/3 + 2/3 = 1/1", () => {
+    test("(1 pts) 1/3 + 2/3 = 1/1", () => {
       const expected = new Rational(1, 1);
       const actual = oneThird.plus(twoThirds);
 
       expect(actual).toMatchObject(expected);
     });
 
-    test("(2 pts) 1/1 + -1/1 = 0", () => {
+    test("(1 pts) 1/1 + -1/1 = 0", () => {
       const expected = new Rational(0, 1);
       const actual = one.plus(negativeOne);
 
       expect(actual).toMatchObject(expected);
     });
 
-    test("(2 pts) -1/1 + 1/1 = 0", () => {
+    test("(1 pts) -1/1 + 1/1 = 0", () => {
       const expected = new Rational(0, 1);
       const actual = negativeOne.plus(one);
 
       expect(actual).toMatchObject(expected);
     });
 
-    test("(2 pts) sum gives same result as plus", () => {
+    test("(1 pts) sum gives same result as plus", () => {
       const sumResult = Rational.sum(one, oneThird);
       const plusResult = one.plus(oneThird);
 
@@ -171,7 +171,7 @@ describe("Rational class tests", () => {
   });
 
   describe("verifyIsRational tests", () => {
-    test("(2 pts) does not accept objects, nulls, or undefined", () => {
+    test("(1 pts) does not accept objects, nulls, or undefined", () => {
       expect(() => Rational.verifyIsRational({})).toThrow();
       expect(() =>
         Rational.verifyIsRational({
@@ -183,7 +183,7 @@ describe("Rational class tests", () => {
       expect(() => Rational.verifyIsRational(undefined)).toThrow();
     });
 
-    test("(2 pts) does accept Rationals created with new Rational constructor", () => {
+    test("(1 pts) does accept Rationals created with new Rational constructor", () => {
       const rational = new Rational(1, 1);
 
       expect(Rational.verifyIsRational(rational)).toBe(true);
