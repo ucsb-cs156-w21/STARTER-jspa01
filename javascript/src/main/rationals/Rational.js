@@ -11,24 +11,15 @@ export default class Rational {
     this.numerator = Math.trunc(numerator);
     this.denominator = Math.trunc(denominator);
 
-    if (this.denominator === 0) {
-      throw new Error("Denominator can not be 0");
-    }
-
     if (this.numerator !== 0) {
       const greatestCommonDivisor = gcd(this.numerator, this.denominator);
       this.numerator /= greatestCommonDivisor;
       this.denominator /= greatestCommonDivisor;
     }
-
-    if ((this.numerator < 0 && this.denominator < 0) || this.denominator < 0) {
-      this.numerator *= -1;
-      this.denominator *= -1;
-    }
   }
 
   toString() {
-    return `${this.numerator}/${this.denominator}`;
+    return "";
   }
 
   plus(other) {
@@ -57,54 +48,31 @@ export default class Rational {
   }
 
   times(other) {
-    Rational.verifyIsRational(other);
-    if (this.numerator === 0 || other.numerator === 0)
-      return new Rational(0, 1);
-
-    const numerator = this.numerator * other.numerator;
-    const denominator = this.denominator * other.denominator;
-
-    return new Rational(numerator, denominator);
+    return 42;
   }
 
   static multiply(first, second) {
-    Rational.verifyIsRational(first);
-    Rational.verifyIsRational(second);
-
-    return first.times(second);
+    return 42;
   }
 
   minus(other) {
-    Rational.verifyIsRational(other);
-    const negativeOther = other.times(new Rational(-1, 1));
-
-    return this.plus(negativeOther);
+    return 42;
   }
 
   static subtract(first, second) {
-    Rational.verifyIsRational(first);
-    Rational.verifyIsRational(second);
-
-    return first.minus(second);
+    return 42;
   }
 
   reciprocal() {
-    return new Rational(this.denominator, this.numerator);
+    return 42;
   }
 
   dividedBy(other) {
-    Rational.verifyIsRational(other);
-
-    const reciprocal = other.reciprocal();
-
-    return this.times(reciprocal);
+    return 42;
   }
 
   static quotient(first, second) {
-    Rational.verifyIsRational(first);
-    Rational.verifyIsRational(second);
-
-    return first.dividedBy(second);
+    return 42;
   }
 
   static verifyIsRational(object) {
