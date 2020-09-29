@@ -29,7 +29,7 @@ describe("RationalInput tests", () => {
     expect(handleChange.mock.calls[1]).toEqual([5, "denominator", "2"]);
   });
 
-  test("(2 pts) can't edit while in readOnly mode", () => {
+  test("(1 pts) can't edit while in readOnly mode", () => {
     const handleChange = jest.fn();
 
     const { getByPlaceholderText } = render(

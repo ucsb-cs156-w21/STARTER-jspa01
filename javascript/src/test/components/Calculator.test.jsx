@@ -10,18 +10,18 @@ describe("Calculator tests", () => {
     expect(calculator).toBeInTheDocument();
   });
 
-  test("(2 pts) there are 3 numerator fields", () => {
+  test("(1 pts) there are 3 numerator fields", () => {
     const { getAllByPlaceholderText } = render(<Calculator />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     expect(numeratorFields.length).toBe(3);
   });
-  test("(2 pts) there are 3 denominator fields", () => {
+  test("(1 pts) there are 3 denominator fields", () => {
     const { getAllByPlaceholderText } = render(<Calculator />);
     const denominatorFields = getAllByPlaceholderText("denominator");
     expect(denominatorFields.length).toBe(3);
   });
 
-  test("(2 pts) entering two rationals and clicking the calculate button will call the calculateFromUserInput prop", () => {
+  test("(1 pts) entering two rationals and clicking the calculate button will call the calculateFromUserInput prop", () => {
     const calculate = jest.fn();
     calculate.mockReturnValue({
       numerator: 5,
@@ -55,7 +55,7 @@ describe("Calculator tests", () => {
     ]);
   });
 
-  test("(2 pts) an error caused in the calculate function will show as an error to the user", () => {
+  test("(1 pts) an error caused in the calculate function will show as an error to the user", () => {
     const calculate = jest.fn();
     calculate.mockImplementationOnce(() => {
       throw new Error("Error: something went wrong");
