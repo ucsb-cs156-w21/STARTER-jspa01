@@ -3,12 +3,14 @@ import { render } from "@testing-library/react";
 import App from "main/App";
 import { BrowserRouter } from "react-router-dom";
 
-test("(1 pts) renders calculator", () => {
-  const { getByTestId } = render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
-  const calculator = getByTestId("calculator");
-  expect(calculator).toBeInTheDocument();
+describe("App Tests", () => {
+  test("(2 pts) renders calculator", () => {
+    const { getByTestId } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+    const calculator = getByTestId("calculator");
+    expect(calculator).toBeInTheDocument();
+  });
 });
