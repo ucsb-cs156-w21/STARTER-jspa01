@@ -8,7 +8,7 @@ describe("Subtract tests", () => {
     render(<Subtract />);
   });
 
-  test("(2 pts) pressing the calculate button should sum the two rationals", () => {
+  test("(5 pts) pressing the calculate button should sum the two rationals", () => {
     const { getAllByPlaceholderText, getByRole } = render(<Subtract />);
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");
