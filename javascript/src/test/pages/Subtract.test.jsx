@@ -8,8 +8,14 @@ describe("Subtract tests", () => {
     render(<Subtract />);
   });
 
-  test("(2 pts) pressing the calculate button should sum the two rationals", () => {
-    const { getAllByPlaceholderText, getByRole } = render(<Subtract />);
+  test("(2 pts) pressing the calculate button should subtract the two rationals", () => {
+    const { getAllByPlaceholderText, getByRole, getByText } = render(
+      <Subtract />
+    );
+
+    const title = getByText("Subtract");
+    expect(title).toBeInTheDocument();
+
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");
     userEvent.type(numeratorFields[0], "1");
