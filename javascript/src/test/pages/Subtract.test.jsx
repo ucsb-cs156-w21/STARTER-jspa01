@@ -8,7 +8,7 @@ describe("Subtract tests", () => {
     render(<Subtract />);
   });
 
-  test("(2 pts) pressing the calculate button should subtract the two rationals", () => {
+  test("(5 pts) pressing the calculate button should subtract the two rationals", () => {
     const { getAllByPlaceholderText, getByRole, getByText } = render(
       <Subtract />
     );

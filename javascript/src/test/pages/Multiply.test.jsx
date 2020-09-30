@@ -8,7 +8,7 @@ describe("Multiply tests", () => {
     render(<Multiply />);
   });
 
-  test("(2 pts) pressing the calculate button should multiply the two rationals", () => {
+  test("(5 pts) pressing the calculate button should multiply the two rationals", () => {
     const { getAllByPlaceholderText, getByRole, getByText } = render(
       <Multiply />
     );

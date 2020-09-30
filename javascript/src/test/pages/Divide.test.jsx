@@ -8,7 +8,7 @@ describe("Divide tests", () => {
     render(<Divide />);
   });
 
-  test("(2 pts) pressing the calculate button should divide the two rationals", () => {
+  test("(5 pts) pressing the calculate button should divide the two rationals", () => {
     const { getAllByPlaceholderText, getByRole, getByText } = render(
       <Divide />
     );
