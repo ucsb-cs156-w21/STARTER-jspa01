@@ -8,8 +8,14 @@ describe("Divide tests", () => {
     render(<Divide />);
   });
 
-  test("(5 pts) pressing the calculate button should sum the two rationals", () => {
-    const { getAllByPlaceholderText, getByRole } = render(<Divide />);
+  test("(5 pts) pressing the calculate button should divide the two rationals", () => {
+    const { getAllByPlaceholderText, getByRole, getByText } = render(
+      <Divide />
+    );
+
+    const title = getByText("Divide");
+    expect(title).toBeInTheDocument();
+
     const numeratorFields = getAllByPlaceholderText("numerator");
     const denominatorFields = getAllByPlaceholderText("denominator");
     userEvent.type(numeratorFields[0], "1");
