@@ -115,6 +115,7 @@ describe("Rational class tests", () => {
     test("(2 pts) times gives same result as multiply", () => {
       const timesResult = oneThird.times(twoThirds);
       const multiplyResult = Rational.multiply(oneThird, twoThirds);
+      expect(timesResult).toEqual(new Rational(2, 9));
       expect(timesResult).toEqual(multiplyResult);
     });
   });
@@ -135,6 +136,8 @@ describe("Rational class tests", () => {
     test("(2 pts) subtract gives same result as minus", () => {
       const subtractResult = Rational.subtract(one, twoThirds);
       const minusResult = one.minus(twoThirds);
+
+      expect(subtractResult).toEqual(oneThird);
       expect(subtractResult).toEqual(minusResult);
     });
   });
@@ -161,6 +164,8 @@ describe("Rational class tests", () => {
     test("(2 pts) quotient gives the same result as dividedBy", () => {
       const quotientResult = Rational.quotient(twoThirds, oneThird);
       const dividedByResult = twoThirds.dividedBy(oneThird);
+
+      expect(quotientResult).toEqual(new Rational(2, 1));
       expect(quotientResult).toEqual(dividedByResult);
     });
   });

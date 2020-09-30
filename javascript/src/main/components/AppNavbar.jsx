@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const AppNavbar = () => {
   return (
-    <Navbar style={{}} className="navbar-light bg-light mr-auto">
+    <Navbar className="navbar-light bg-light mr-auto">
       <LinkContainer style={{ marginLeft: "15%" }} to="/">
         <Navbar.Brand>React Rational Calculator</Navbar.Brand>
       </LinkContainer>
