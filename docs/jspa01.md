@@ -761,11 +761,156 @@ If all of those are true, then you can submit your project to GradeScope.
 
 ## Bonus
 
-<details>
+<details open>
   <summary>The Calculator component</summary>
+
+# Breaking down the `Calculator` component
 
 If you're deciding to read this, we'd recommend that you first finish the lab. This is going to get into the details of React and how functional components work.
 
-TODO: break down the Calculator component.
+Before we get into the nitty gritty of the `Calculator` component however, it's worth understanding what the goal of this component is.
+
+The goal of the `Calculator` component is to display and manage a rational calculator. It is responsible for the following:
+
+- Calling the provided `calculateFromUserInput` method when the `Calculate` button is pressed and passing the method the values in the fields.
+- Displaying the provided `title`, `subtitle`, and `sign` in the appropriate locations.
+
+## Imports and method signature
+
+With the big picture out of the way, we're now going to focus on the code chunk by chunk.
+
+```jsx
+// 1
+import React, { useState, useReducer } from "react";
+import { Row, Col, Button, Alert } from "react-bootstrap";
+import RationalInput from "main/components/RationalInput";
+
+// 2
+const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
+  ...
+};
+
+export default Calculator;
+```
+
+1. We're `import`ing more than just the usual React here; we're adding some React Hooks here which are `useState` and `useReducer`. [React Hooks](https://reactjs.org/docs/hooks-intro.html) are the way we allow for our components to maintain state in our components as React re-renders our components. We'll get into how these two functions behave in the next section.
+2. You may notice that this component's function is accepting arguments. Component arguments (more often called `props`) is how data is communicated between parent components an their children. We are also making use of destructuring assignment in the first argument parameter to clean up code that would otherwise look like this:
+
+```jsx
+// Without de-structuring, you'd need to append the argument name to the beginning of each value.
+const Calculator = (props) => {
+  // props.calculateFromUserInput
+  // props.title
+  // props.subtitle
+  // props.sign
+  ...
+};
+```
+
+## Everything before the return statement
+
+We'll now dig into the first half of the internals:
+
+```jsx
+const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
+  // 1
+  const [result, setResult] = useState({
+    numerator: "",
+    denominator: "",
+  });
+  const [error, setError] = useState(null);
+  // 2
+  const [userInput, setUserInput] = useReducer(
+    (state, { index, fieldName, value }) => {
+      let newState = [...state];
+      newState[index][fieldName] = value;
+      // Return the current state updated with the new values in newState
+      return newState;
+    },
+    [
+      {
+        numerator: "",
+        denominator: "",
+      },
+      {
+        numerator: "",
+        denominator: "",
+      },
+    ]
+  );
+  // 3
+  const handleChange = (index, fieldName, value) => {
+    setUserInput({ index, fieldName, value });
+  };
+  // 4
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    try {
+      const result = calculateFromUserInput(userInput);
+      setResult(result);
+      setError(null);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  return (...);
+};
+```
+
+1. This is our first encounter with the `useState` hook. In this case, we're remembering the value of the answer to the last calculation that our calculator performed, beginning with the `numerator` and `denominator` being blank. You should read up on how it works in the React documentation [here](https://reactjs.org/docs/hooks-state.html#declaring-a-state-variable).
+2. Here we're using a more complex hook `useReducer` to manage the state of the form in `Calculator`. You can read the docs on it [here](https://reactjs.org/docs/hooks-reference.html#usereducer) if you're interested in how it works.
+3. The `handleChange` function is responsible for correctly calling `setUserInput`, which is the update function tied to our `useReducer` that is managing form state.
+4. The `handleSubmit` function is responsible for handling the form submission event. It uses `event.preventDefault()` to prevent the page from reloading (the "default" behavior). It then passes `userInput`, the state managed by `useReducer`, to `calculateFromUserInput` and retrieves the result. If everything goes well, it updates the result and removes any error that may have previously been present. If an error is thrown, it updates the error state.
+
+## The return statement
+
+Finally, we'll look over the return statement:
+
+```jsx
+const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
+  ...
+  return (
+    {/* 1 */}
+    <div data-testid="calculator">
+      {/* 2 */}
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
+      {/* 3 */}
+      {error && <Alert variant="danger">{error.message}</Alert>}
+      {/* 4 */}
+      <form onSubmit={handleSubmit}>
+        <Row style={{ maxWidth: "75%" }}>
+          <Col>
+            {/* 5 */}
+            <RationalInput
+              index={0}
+              handleChange={handleChange}
+              value={userInput[0]}
+            />
+          </Col>
+          ...
+        </Row>
+        <br />
+        <Row>
+          {/* 6 */}
+          <Button type="submit">Calculate</Button>
+        </Row>
+      </form>
+    </div>
+  );
+};
+```
+
+1. If you're curious about this `data-testid` value, it's purpose is to appear on the div for testing purposes (hence the `testid` part). This allows for React Testing Library to find this component with `getByTestId("calculator")`.
+2. This is an example of how we're using `title` and `subtitle` as content. Note the use of `{ ... }` to break into JavaScript.
+3. If you haven't seen this use of `&&` before, it means the right hand side doesn't run unless the left hand side is truthy. In this case, if there is no `error`, don't render an `<Alert>`.
+4. This `form` component is the primary driver for this component. You'll notice that this is where we make use of our `handleSubmit` function.
+5. The `RationalInput` component is the component that manages each individual Rational input (the numerator / denominator components in the calculator). You can see here that we're providing it some of the information it needs to invoke `handleChange` correctly by providing it an `index` and what it is supposed to display via `value`.
+6. The form submits when this button is clicked due to the `type` parameter on this button being set to `submit`. Having a button with this property in any `<form>` will cause that button to submit the form on click, with no addtional setup required.
+
+## And that's it!
+
+If that felt like WAY too much information, don't worry; there is a reason this is in the bonus section instead of the main lab. We'll be learning some of these more advanced concepts in labs to come.
 
 </details>
