@@ -44,7 +44,7 @@ To set this up:
   need to visit 
   <https://codecov.io/gh/YOUR-GITHUB-ID/REPO-NAME-HERE> instead.
 
-* On that page, there should be a so-called *download-token* value, a series of letters and numbers
+* On that page, there should be a so-called *upload-token* value, a series of letters and numbers
   like a very long password.   You'll need to copy/paste that value, so keep that window open.
 
 * Visit your repo, go to the Settings tab for the repo (not the Settings tab for your GitHub account)
