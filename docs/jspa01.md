@@ -57,7 +57,7 @@ You can find the instructions for getting started in the `README.md` file in the
 Keep in mind the following:
 
 - `npm install` is going to take a long time to run, sometimes upwards of 10 minutes. This is particularly true if you've never worked with `npm` on your machine before.
-- There should be 22 failing tests when you run `npm test`; don't worry, it's _supposed_ to be like that at the beginning.
+- There should be 25 failing tests when you run `npm test`; don't worry, it's _supposed_ to be like that at the beginning.
 
 If you're working over SSH on CSIL, the following notes may apply to you:
 
@@ -82,7 +82,7 @@ If you ran the tests before, you might notice that there are _a lot_ of failing 
 npm test -- Rational.test.js
 ```
 
-The `--` adds a filter to `npm test` that only runs test files that have a prefix that matches the following arguments. In this case, we want to focus on tests from `Rational.test.js`, so we used that. This narrows down the number of failing tests to 13, each with a much more manageable output.
+The `--` adds a filter to `npm test` that only runs test files that have a prefix that matches the following arguments. In this case, we want to focus on tests from `Rational.test.js`, so we used that. This narrows down the number of failing tests to 16, each with a much more manageable output.
 
 - **Note**: we could also have used `Rational.test` in place of `Rational.test.js`, as it does prefix matching on filenames, including the file's path.
 
@@ -282,7 +282,7 @@ Here's the specific test command for only running tests related to these methods
 npm test -- Rational.test.js -t divide
 ```
 
-You'll be ready to move on from this step once you pass all of the tests when running `npm test -- Rationals.test.js`. Once that's the case, make sure your changes are committed and pushed to GitHub.
+You'll be ready to move on from this step once you pass all of the tests when running `npm test -- Rational.test.js`. Once that's the case, make sure your changes are committed and pushed to GitHub.
 
 ## Fixing up the Rational Helpers
 
@@ -731,7 +731,7 @@ export default Subtract;
 3. We're going to assign the different prop values we're passing to `Calculator` here. We need to pass `calculateFromUserInput`, `title`, `subtitle`, and `sign` in order to satisfy `Calculator`.
 4. We're going to create a `Calculator` component and pass the props into it using the spread operator.
 
-After making those changes, we should be able to see that the our test now passes.Don't forget to commit and push your changes as you fix tests.
+After making those changes, we should be able to see that the our test now passes. Don't forget to commit and push your changes as you fix tests.
 
 ### Fixing the Multiply Page
 
