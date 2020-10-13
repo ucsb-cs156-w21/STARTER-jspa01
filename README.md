@@ -42,7 +42,7 @@ To set this up:
   The `ucsb-cs156-f20` should be kept the same, assuming that you created the repo under
   the class organization.  If, instead, you created it under your own github id, you'll
   need to visit 
-  <https://codecov.io/gh/YOUR-GITHUB-ID/REPO-NAME-HERE> instead.
+  <https://codecov.io/gh/ucsb-cs156-f20/REPO-NAME-HERE> instead.
 
 * On that page, there should be a so-called *upload-token* value, a series of letters and numbers
   like a very long password.   You'll need to copy/paste that value, so keep that window open.
@@ -65,6 +65,6 @@ To set this up:
   
 * To see your code coverage results on <https://codecov.io>, you need to trigger GitHub
   actions to run, either with a push to a branch, or a Pull Request.  Then, by visiting
-  the URL <https://codecov.io/gh/YOUR-GITHUB-ID/REPO-NAME-HERE> you should be able to
+  the URL <https://codecov.io/gh/ucsb-cs156-f20/REPO-NAME-HERE> you should be able to
   see your code coverage results.
 
