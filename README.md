@@ -1,3 +1,12 @@
+# STARTER-jspa01
+
+This is the starter code for JavaScript Programming Assignment jspa01
+for the W21 quarter of CMPSC 156.
+
+The assignment instructions can be found here:
+* <https://ucsb-cs156.github.io/w21/lab/jspa01/>
+
+
 # React Rational Calculator
 
 This is the code for the React Rational Calculator lab.
@@ -27,7 +36,7 @@ Always `cd javascript` before running any of these commands.
   interact with a web page.
 * `npm test` runs the unit tests for this project. 
 
-# Setting up Code Coverage
+# Setting up GitHub Actions and Codecov.io
 
 The directory `.github/workflows` contains GitHub Actions that can be used to
 * Run the test cases for this app
@@ -36,13 +45,13 @@ The directory `.github/workflows` contains GitHub Actions that can be used to
 
 To set this up:
 * Login to <https://codecov.io> with you GitHub id.
-* Visit the page <https://codecov.io/gh/ucsb-cs156-f20/REPO-NAME-HERE> except change `REPO-NAME-HERE`
+* Visit the page <https://codecov.io/gh/ucsb-cs156-w21/REPO-NAME-HERE> except change `REPO-NAME-HERE`
   to the name of this repository.
 
-  The `ucsb-cs156-f20` should be kept the same, assuming that you created the repo under
+  The `ucsb-cs156-w21` should be kept the same, assuming that you created the repo under
   the class organization.  If, instead, you created it under your own github id, you'll
   need to visit 
-  <https://codecov.io/gh/ucsb-cs156-f20/REPO-NAME-HERE> instead.
+  <https://codecov.io/gh/ucsb-cs156-w21/REPO-NAME-HERE> instead.
 
 * On that page, there should be a so-called *upload-token* value, a series of letters and numbers
   like a very long password.   You'll need to copy/paste that value, so keep that window open.
@@ -50,7 +59,7 @@ To set this up:
 * Visit your repo, go to the Settings tab for the repo (not the Settings tab for your GitHub account)
   and then find `Secrets` in the left navigation, and click on it.
 
-  Or, equivalently, visit the URL <https://github.com/ucsb-cs156-f20/YOUR-REPO-NAME-HERE/settings/secrets>
+  Or, equivalently, visit the URL <https://github.com/ucsb-cs156-w21/YOUR-REPO-NAME-HERE/settings/secrets>
 
 * You should see a `New Secret` button at the upper right.  Click on this, and add a new secret
   called `CODECOV_TOKEN` (must be all uppercase, with underscore).   The value of the secret
@@ -65,6 +74,6 @@ To set this up:
   
 * To see your code coverage results on <https://codecov.io>, you need to trigger GitHub
   actions to run, either with a push to a branch, or a Pull Request.  Then, by visiting
-  the URL <https://codecov.io/gh/ucsb-cs156-f20/REPO-NAME-HERE> you should be able to
+  the URL <https://codecov.io/gh/ucsb-cs156-w21/REPO-NAME-HERE> you should be able to
   see your code coverage results.
 
