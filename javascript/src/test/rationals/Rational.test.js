@@ -1,11 +1,15 @@
 import Rational from "main/rationals/Rational";
 
 describe("Rational class tests", () => {
-  const oneThird = new Rational(1, 3);
-  const twoThirds = new Rational(2, 3);
-  const negativeOne = new Rational(-1, 1);
-  const one = new Rational(1, 1);
-  const zero = new Rational(0, 1);
+  let oneThird, twoThirds, negativeOne, one, zero;
+  beforeEach(() => {
+    oneThird = new Rational(1, 3);
+    twoThirds = new Rational(2, 3);
+    negativeOne = new Rational(-1, 1);
+    one = new Rational(1, 1);
+    zero = new Rational(0, 1);
+  });
+
   describe("constructor tests", () => {
     test("(1 pts) can create a Rational object", () => {
       const rational = new Rational(1, 2);
