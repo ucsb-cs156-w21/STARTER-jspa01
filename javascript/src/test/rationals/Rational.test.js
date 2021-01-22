@@ -61,8 +61,19 @@ describe("Rational class tests", () => {
 
   describe("sum/plus tests", () => {
     test("(1 pts) zero identity tests", () => {
-      expect(one.plus(zero)).toEqual(one);
-      expect(zero.plus(one)).toEqual(one);
+      const onePlusZero = one.plus(zero);
+      const zeroPlusOne = zero.plus(one);
+
+      expect(onePlusZero).toEqual(one);
+      expect(zeroPlusOne).toEqual(one);
+
+      // must return a new instance
+      expect(Object.is(onePlusZero, one)).toBe(false);
+      expect(Object.is(zeroPlusOne, one)).toBe(false);
+
+      // must not mutate inputs
+      expect(one).toMatchObject({ numerator: 1, denominator: 1});
+      expect(zero).toMatchObject({ numerator: 0, denominator: 1});
     });
 
     test("(1 pts) 1/3 + 2/3 = 1/1", () => {
@@ -70,6 +81,10 @@ describe("Rational class tests", () => {
       const actual = oneThird.plus(twoThirds);
 
       expect(actual).toMatchObject(expected);
+
+      // must not mutate inputs
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
+      expect(twoThirds).toMatchObject({ numerator: 2, denominator: 3 });
     });
 
     test("(1 pts) 1/1 + -1/1 = 0", () => {
@@ -77,6 +92,10 @@ describe("Rational class tests", () => {
       const actual = one.plus(negativeOne);
 
       expect(actual).toMatchObject(expected);
+
+      // must not mutate inputs
+      expect(one).toMatchObject({ numerator: 1, denominator: 1 });
+      expect(negativeOne).toMatchObject({ numerator: -1, denominator: 1 });
     });
 
     test("(1 pts) -1/1 + 1/1 = 0", () => {
@@ -84,6 +103,10 @@ describe("Rational class tests", () => {
       const actual = negativeOne.plus(one);
 
       expect(actual).toMatchObject(expected);
+
+      // must not mutate inputs
+      expect(one).toMatchObject({ numerator: 1, denominator: 1 });
+      expect(negativeOne).toMatchObject({ numerator: -1, denominator: 1 });
     });
 
     test("(1 pts) sum gives same result as plus", () => {
@@ -97,28 +120,47 @@ describe("Rational class tests", () => {
   describe("times/multiply tests", () => {
     test("(2 pts) if either rational is zero, it gives zero as result", () => {
       const expected = zero;
-      const firstActual = zero.times(one);
-      const secondActual = one.times(zero);
+      const zeroTimesOne = zero.times(one);
+      const oneTimesZero = one.times(zero);
 
-      expect(firstActual).toEqual(expected);
-      expect(secondActual).toEqual(expected);
+      expect(zeroTimesOne).toEqual(expected);
+      expect(oneTimesZero).toEqual(expected);
+
+      // must return a new instance
+      expect(Object.is(zeroTimesOne, zero)).toBe(false);
+      expect(Object.is(oneTimesZero, zero)).toBe(false);
+
+      // must not mutate inputs
+      expect(one).toMatchObject({ numerator: 1, denominator: 1});
+      expect(zero).toMatchObject({ numerator: 0, denominator: 1});
     });
 
     test("(2 pts) 1/3 * 2/3 = 2/9", () => {
       const expected = new Rational(2, 9);
       const actual = oneThird.times(twoThirds);
+
       expect(actual).toEqual(expected);
+
+      // must not mutate inputs
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
+      expect(twoThirds).toMatchObject({ numerator: 2, denominator: 3 });
     });
 
     test("(2 pts) 1/3 * -1/1 = -1/3", () => {
       const expected = new Rational(-1, 3);
       const actual = oneThird.times(negativeOne);
+
       expect(actual).toEqual(expected);
+
+      // must not mutate inputs
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
+      expect(negativeOne).toMatchObject({ numerator: -1, denominator: 1 });
     });
 
     test("(2 pts) times gives same result as multiply", () => {
       const timesResult = oneThird.times(twoThirds);
       const multiplyResult = Rational.multiply(oneThird, twoThirds);
+
       expect(timesResult).toEqual(new Rational(2, 9));
       expect(timesResult).toEqual(multiplyResult);
     });
@@ -128,13 +170,23 @@ describe("Rational class tests", () => {
     test("(2 pts) 1/1 - 1/3 = 2/3", () => {
       const expected = twoThirds;
       const actual = one.minus(oneThird);
+
       expect(actual).toEqual(expected);
+
+      // must not mutate inputs
+      expect(one).toMatchObject({ numerator: 1, denominator: 1 });
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
     });
 
     test("(2 pts) 1/3 - 1/1 = -2/3", () => {
       const expected = new Rational(-2, 3);
       const actual = oneThird.minus(one);
+
       expect(actual).toEqual(expected);
+
+      // must not mutate inputs
+      expect(one).toMatchObject({ numerator: 1, denominator: 1 });
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
     });
 
     test("(2 pts) subtract gives same result as minus", () => {
@@ -150,7 +202,11 @@ describe("Rational class tests", () => {
     test("(2 pts) reciprocal of 1/3 is 3/1", () => {
       const expected = new Rational(3, 1);
       const actual = oneThird.reciprocal();
+
       expect(actual).toEqual(expected);
+
+      // must not mutate inputs
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
     });
 
     test("(2 pts) throws an error when taking reciprocal of zero", () => {
@@ -162,7 +218,12 @@ describe("Rational class tests", () => {
     test("(2 pts) 2/3 divided by 1/3 = 2/1", () => {
       const expected = new Rational(2, 1);
       const actual = twoThirds.dividedBy(oneThird);
+
       expect(actual).toEqual(expected);
+
+      // must not mutate inputs
+      expect(twoThirds).toMatchObject({ numerator: 2, denominator: 3 });
+      expect(oneThird).toMatchObject({ numerator: 1, denominator: 3 });
     });
 
     test("(2 pts) quotient gives the same result as dividedBy", () => {
