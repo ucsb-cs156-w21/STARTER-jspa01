@@ -29,13 +29,8 @@ export default class Rational {
     if (other.numerator === 0)
       return new Rational(this.numerator, this.denominator);
 
-    const numGCD = gcd(this.numerator, other.numerator);
-    const denomGCD = gcd(this.denominator, other.denominator);
-
-    const numerator =
-      (this.numerator / numGCD) * (other.denominator / denomGCD) +
-      (other.numerator / numGCD) * (this.denominator / denomGCD);
     const denominator = lcm(this.denominator, other.denominator);
+    const numerator = (denominator*this.numerator)/this.denominator + (denominator*other.numerator)/other.denominator;
 
     return new Rational(numerator, denominator);
   }
