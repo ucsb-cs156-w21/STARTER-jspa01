@@ -3,6 +3,7 @@ import Rational from "main/rationals/Rational";
 describe("Rational class tests", () => {
   const oneThird = new Rational(1, 3);
   const twoThirds = new Rational(2, 3);
+  const twoSevenths = new Rational(2, 7);
   const negativeOne = new Rational(-1, 1);
   const one = new Rational(1, 1);
   const zero = new Rational(0, 1);
@@ -64,6 +65,13 @@ describe("Rational class tests", () => {
     test("(1 pts) 1/3 + 2/3 = 1/1", () => {
       const expected = new Rational(1, 1);
       const actual = oneThird.plus(twoThirds);
+
+      expect(actual).toMatchObject(expected);
+    });
+
+    test("(0 pts) 2/7 + 2/3 = 20/21", () => {
+      const expected = new Rational(20, 21);
+      const actual = twoSevenths.plus(twoThirds);
 
       expect(actual).toMatchObject(expected);
     });
